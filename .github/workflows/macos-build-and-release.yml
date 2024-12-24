@@ -22,20 +22,30 @@ jobs:
     - name: Build App
       run: |
         xcodebuild -project ProtonDrive-macOS/ProtonDrive-macOS.xcodeproj \
-                  -scheme "ProtonDriveMac-Sparkle" \
+                  -scheme "ProtonDrive-macOS-Store" \
                   -configuration Release \
-                  -xcconfig ProtonDrive-macOS/ProtonDriveMac/BuildConfigs/ProtonDrive-Config-Release-External.xcconfig \
+                  -derivedDataPath ./DerivedData \
                   CODE_SIGN_IDENTITY="-" \
-                  CODE_SIGNING_REQUIRED=NO
-        
+                  CODE_SIGNING_REQUIRED=NO \
+                  SYMROOT="$(pwd)/build"
+
     - name: Create DMG
       run: |
         brew install create-dmg
+        APP_PATH="$(pwd)/build/Release/ProtonDrive.app"
         create-dmg \
           --volname "Proton Drive" \
           --window-pos 200 120 \
           --window-size 800 400 \
           --icon-size 100 \
+          --icon "ProtonDrive.app" 200 190 \
+          --hide-extension "ProtonDrive.app" \
           --app-drop-link 600 185 \
-          "build/ProtonDrive.dmg" \
-          "build/Release/ProtonDrive.app"
+          "ProtonDrive.dmg" \
+          "$APP_PATH"
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ProtonDrive
+        path: ProtonDrive.dmg
