@@ -13,6 +13,8 @@ jobs:
       with:
         fetch-depth: 0
         submodules: true
+        # Ensure all necessary submodules are fetched
+        persist-credentials: false
         
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1

@@ -14,6 +14,10 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "PDLoadTesting", path: "../PDLoadTesting"),
+        .package(name: "PDFileProvider", path: "../PDFileProvider"),
+        .package(name: "PDLocalization", path: "../PDLocalization"),
+        .package(name: "PDCore", path: "../PDCore"),
+        .package(name: "PDUploadVerifier", path: "../PDUploadVerifier"),
 
         // exact version is defined by protoncore_ios
         .package(url: "https://github.com/ProtonMail/protoncore_ios.git", .suitable),
@@ -26,6 +30,10 @@ let package = Package(
             name: "PDClient",
             dependencies: [
                 .product(name: "PDLoadTesting", package: "PDLoadTesting"),
+                .product(name: "PDFileProvider", package: "PDFileProvider"),
+                .product(name: "PDLocalization", package: "PDLocalization"),
+                .product(name: "PDCore", package: "PDCore"),
+                .product(name: "PDUploadVerifier", package: "PDUploadVerifier"),
 
                 .product(name: "ProtonCoreUtilities", package: "protoncore_ios"),
                 .product(name: "ProtonCoreNetworking", package: "protoncore_ios"),

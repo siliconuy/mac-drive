@@ -13,6 +13,10 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "PDLoadTesting", path: "../PDLoadTesting"),
+        .package(name: "PDFileProvider", path: "../PDFileProvider"),
+        .package(name: "PDLocalization", path: "../PDLocalization"),
+        .package(name: "PDCore", path: "../PDCore"),
+        .package(name: "PDUploadVerifier", path: "../PDUploadVerifier"),
 
         // exact version is defined by PDClient
         .package(url: "https://github.com/ProtonMail/protoncore_ios.git", .suitable),
@@ -24,6 +28,10 @@ let package = Package(
             dependencies: [
                 .product(name: "ProtonCoreLoginUI", package: "protoncore_ios"),
                 .product(name: "PDLoadTesting", package: "PDLoadTesting"),
+                .product(name: "PDFileProvider", package: "PDFileProvider"),
+                .product(name: "PDLocalization", package: "PDLocalization"),
+                .product(name: "PDCore", package: "PDCore"),
+                .product(name: "PDUploadVerifier", package: "PDUploadVerifier"),
             ],
             path: "PDLogin-macOS",
             resources: [
