@@ -19,6 +19,11 @@ jobs:
       with:
         xcode-version: '15.1'
 
+    - name: Update Swift Packages
+      run: |
+        cd ProtonDrive-macOS
+        swift package update
+
     - name: Resolve Dependencies
       run: |
         cd ProtonDrive-macOS
